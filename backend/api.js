@@ -22,8 +22,3 @@ export const addBook = async(book) => {
         console.log("Error adding book: ", error);
     }
 };
-
-/*connectToDatabase().then(() => {
-    const book = {title: "Harry Potter", author: "J.K. Rowling"};
-    addBook(book);
-})*/
