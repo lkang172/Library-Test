@@ -4,7 +4,7 @@ import { fetchBooks, addBook } from './api.js';
 import cors from 'cors';
 
 const app = express(); //creates instance of Express app
-const PORT = 3000; //sets port number from .env
+const PORT = process.env.PORT; //sets port number from .env
 
 app.use(cors());
 app.use(express.json()); //middleware setup - converts JSON to JS object
