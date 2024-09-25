@@ -1,30 +1,24 @@
-import dotenv from 'dotenv';
-dotenv.config();
-import {MongoClient, ServerApiVersion} from 'mongodb';
-const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@librarycluster.qkne8.mongodb.net/?retryWrites=true&w=majority&appName=LibraryCluster`;
+import express from 'express';
+import {connectToDatabase} from "./dbconnection.js";
+import { fetchBooks, addBook } from './api.js';
 
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.use(express.json());
+
+connectToDatabase();
+
+app.get('api/books', async(req, res) => {
+    const books = await fetchBooks();
+    res.json(books);
 });
 
-let db;
+app.post('api/books', async(req, res) => {
+    const books = await fetchBooks();
+    res.json(books);
+});
 
-export const connectToDatabase = async () => {
-  try {
-    await client.connect();
-    db = client.db("HalcyonX");
-    console.log("Connected to MongoDB database.");
-  } catch (error) {
-    console.error("Failed to connect to database:", error);
-  }
-};
-
-export const getDb = () => {
-  if(!db)
-    throw new Error("Database not initialized. Call connectToDatabase first.");
-  return db;
-};
+app.listen(PORT, () => {
+    console.log('Server is running on port ${PORT}');
+});

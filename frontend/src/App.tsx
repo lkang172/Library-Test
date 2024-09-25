@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <InputTest prompt1="Class" prompt2="Assignment"></InputTest>
+      <InputTest prompt1="Book" prompt2="Author"></InputTest>
       <Grid>
         {cards.map((card) => (
           <Card title={card.title} text={card.text} image={card.image} />

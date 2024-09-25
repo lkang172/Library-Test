@@ -1,4 +1,4 @@
-import {connectToDatabase, getDb} from './server.js';
+import {connectToDatabase, getDb} from './dbconnection.js';
 
 export const fetchBooks = async () => {
     try {
