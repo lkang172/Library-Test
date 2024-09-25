@@ -1,6 +1,6 @@
-require('dotenv').config();
-
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const dotenv = await import('dotenv');
+dotenv.config();
+import {MongoClient, ServerApiVersion} from 'mongodb';
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@librarycluster.qkne8.mongodb.net/?retryWrites=true&w=majority&appName=LibraryCluster`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
