@@ -1,6 +1,6 @@
-# Halcyon
+# HalcyonX
 
-Halcyon is a mix between a library website and social media platform (very much in progress) with the goal of incentivizing users to read more. This is done by:
+HalcyonX is a mix between a library website and social media platform (very much in progress) with the goal of incentivizing users to read more. This is done by:
 
 - Suggesting books to users based on their interests
 - Allowing users to start a discussion post upon finishing a book
