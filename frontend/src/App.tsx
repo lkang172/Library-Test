@@ -10,8 +10,13 @@ function App() {
       <Navbar></Navbar>
       <InputTest prompt1="Book" prompt2="Author"></InputTest>
       <Grid>
-        {cards.map((card) => (
-          <Card title={card.title} text={card.text} image={card.image} />
+        {cards.map((card, index) => (
+          <Card
+            key={index}
+            title={card.title}
+            text={card.text}
+            image={card.image}
+          />
         ))}
       </Grid>
     </>
