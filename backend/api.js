@@ -23,7 +23,7 @@ export const addBook = async(book) => {
     }
 };
 
-connectToDatabase().then(() => {
+/*connectToDatabase().then(() => {
     const book = {title: "Harry Potter", author: "J.K. Rowling"};
     addBook(book);
-})
+})*/

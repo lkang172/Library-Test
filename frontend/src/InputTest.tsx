@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 
 interface InputProps {
   prompt1: string;
@@ -7,27 +6,49 @@ interface InputProps {
 }
 
 function InputTest({ prompt1, prompt2 }: InputProps) {
-  const [task, setTask] = useState("");
-  const addTask = () => {
-    axios
-      .post("http://localhost:5173/?", { task: task })
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newBook = { title, author };
+
+    try {
+      const response = await fetch("http://localhost:3000/api/books", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/JSON",
+        },
+        body: JSON.stringify(newBook),
+      });
+
+      if (response.ok) {
+        const addedBook = await response.json();
+        console.log("Book added:", addedBook);
+        setTitle("");
+        setAuthor("");
+      } else {
+        console.error("Failed to add book:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error adding book:", error);
+    }
   };
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">
             {prompt1}
           </label>
           <input
-            type="email"
+            type="text"
             className="form-control"
-            id="exampleInputEmail1"
+            value={title}
             aria-describedby="emailHelp"
-            onChange={(e) => setTask(e.target.value)}
+            onChange={(e) => setTitle(e.target.value)}
           />
           <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
@@ -38,9 +59,11 @@ function InputTest({ prompt1, prompt2 }: InputProps) {
             {prompt2}
           </label>
           <input
-            type="password"
+            type="text"
             className="form-control"
+            value={author}
             id="exampleInputPassword1"
+            onChange={(e) => setAuthor(e.target.value)}
           />
         </div>
         <div className="mb-3 htmlForm-check">
@@ -53,7 +76,7 @@ function InputTest({ prompt1, prompt2 }: InputProps) {
             Check me out
           </label>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={addTask}>
+        <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>

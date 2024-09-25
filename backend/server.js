@@ -1,10 +1,12 @@
 import express from 'express';
 import {connectToDatabase} from "./dbconnection.js";
 import { fetchBooks, addBook } from './api.js';
+import cors from 'cors';
 
 const app = express(); //creates instance of Express app
-const PORT = process.env.PORT; //sets port number from .env
+const PORT = 3000; //sets port number from .env
 
+app.use(cors());
 app.use(express.json()); //middleware setup - converts JSON to JS object
 
 connectToDatabase(); //connects to Mongo
