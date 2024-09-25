@@ -1,29 +1,29 @@
-import client from './server.js';
+import {connectToDatabase, getDb} from './server.js';
 
 export const fetchBooks = async () => {
     try {
-        await client.connect();
-        const database = client.db("libraryDB");
-        const booksCollection = database.collection("books");
+        const db = getDb();
+        const booksCollection = db.collection("books");
         const books = await booksCollection.find().toArray();
         return books;
     } catch (error) {
         console.log("Error fetching books: ", error);
-    } finally {
-        await client.close();
     }
 };
 
 export const addBook = async(book) => {
     try {
-        await client.connect();
-        const database = client.db("LibraryCluster");
-        const booksCollection = database.collection("books");
-        const result = await booksCollection.insertOne({title: "Mossflower", author: "Brian Jacques"});
+        const db = getDb();
+        const booksCollection = db.collection("Library");
+        const result = await booksCollection.insertOne(book);
+        console.log("Book inserted with ID:", result.insertedId);
         return result;
     } catch (error) {
         console.log("Error adding book: ", error);
-    } finally {
-        await client.close();
     }
 };
+
+connectToDatabase().then(() => {
+    const book = {title: "Harry Potter", author: "J.K. Rowling"};
+    addBook(book);
+})

@@ -1,9 +1,8 @@
-const dotenv = await import('dotenv');
+import dotenv from 'dotenv';
 dotenv.config();
 import {MongoClient, ServerApiVersion} from 'mongodb';
 const uri = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@librarycluster.qkne8.mongodb.net/?retryWrites=true&w=majority&appName=LibraryCluster`;
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
   serverApi: {
     version: ServerApiVersion.v1,
@@ -12,17 +11,20 @@ const client = new MongoClient(uri, {
   }
 });
 
-async function run() {
+let db;
+
+export const connectToDatabase = async () => {
   try {
-    // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
+    db = client.db("HalcyonX");
+    console.log("Connected to MongoDB database.");
+  } catch (error) {
+    console.error("Failed to connect to database:", error);
   }
-}
-run().catch(console.dir);
-export default client;
+};
+
+export const getDb = () => {
+  if(!db)
+    throw new Error("Database not initialized. Call connectToDatabase first.");
+  return db;
+};
