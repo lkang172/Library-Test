@@ -2,12 +2,15 @@ import Grid from "./Grid";
 import Navbar from "./Navbar";
 import InputTest from "./InputTest";
 import Gallery from "./Gallery";
+import { UserProvider } from "./UserContext";
 
 function App() {
   return (
     <>
-      <Navbar></Navbar>
-      <Gallery></Gallery>
+      <UserProvider>
+        <Navbar></Navbar>
+        <Gallery></Gallery>
+      </UserProvider>
     </>
   );
 }
