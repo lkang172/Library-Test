@@ -14,7 +14,7 @@ app.use(express.json()); //middleware setup - converts JSON to JS object
 
 connectToDatabase(); //connects to Mongo
 
-/*app.get('/mongodb/books', async(req, res) => {
+app.get('/mongodb/books', async(req, res) => {
     const books = await fetchFromDb(); //retrieve books from database
     res.json(books); //sends books to client (frontend)
 });
@@ -29,7 +29,7 @@ app.post('/mongodb/books', async(req, res) => {
         console.error("Error adding book:", error);
         res.status(500).json({message: "Failed to add book"});
     }
-});*/
+});
 
 app.get('/googleBooksApi/books', async(req, res) => {
     try {

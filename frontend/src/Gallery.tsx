@@ -37,9 +37,8 @@ function Gallery() {
           <Card
             key={index}
             title={book.title}
-            text={`Author: ${book.authors.join(", ")} | Pages: ${
-              book.pageCount
-            }`}
+            author={`Author: ${book.authors.join(", ")}`}
+            pages={book.pageCount}
             image={book.image}
           ></Card>
         ))}

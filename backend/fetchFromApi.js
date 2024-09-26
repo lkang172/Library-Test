@@ -7,7 +7,7 @@ export const fetchFromApi = async () => {
     const searchQueries = []
 
     try {
-        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:fiction&key=${apiKey}&maxResults=50`);
+        const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=subject:fiction&key=${apiKey}&maxResults=40`);
         if(!response.ok) throw new Error(`HTTP Error! Status: ${response.status}`);
 
         const data = await response.json();

@@ -2,15 +2,16 @@ import styled from "styled-components";
 
 interface CardProps {
   title: string;
-  text: string;
+  author: string;
+  pages: string | number;
   image: string;
 }
 
-function Card({ title, text, image }: CardProps) {
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+function Card({ title, author, pages, image }: CardProps) {
+  const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    const newBook = { title, text, image };
+    const newBook = { title, author, pages, image };
 
     try {
       const response = await fetch("http://localhost:3000/mongodb/books", {
@@ -35,11 +36,19 @@ function Card({ title, text, image }: CardProps) {
   return (
     <>
       <div className="card" style={{ width: "18rem" }}>
-        <img src={image} className="card-img-top" alt="..." />
+        <img
+          src={image}
+          style={{ verticalAlign: "middle" }}
+          className="card-img-top"
+          alt="..."
+        />
         <div className="card-body">
           <h5 className="card-title">{title}</h5>
-          <p className="card-text">{text}</p>
-          <button className="btn btn-primary">Add to library</button>
+          <p className="card-text">{author}</p>
+          <p className="card-text">Pages: {pages}</p>
+          <button className="btn btn-primary" onClick={handleSubmit}>
+            Add to library
+          </button>
         </div>
       </div>
     </>

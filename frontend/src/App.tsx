@@ -7,10 +7,10 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
+      <InputTest prompt1="Book" prompt2="Author"></InputTest>
       <Grid>
         <Gallery></Gallery>
       </Grid>
-      <InputTest prompt1="Book" prompt2="Author"></InputTest>
     </>
   );
 }
