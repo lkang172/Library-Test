@@ -1,10 +1,12 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 function Navbar() {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary sticky-top">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            Navbar
+            HalcyonX
           </a>
           <button
             className="navbar-toggler"
@@ -21,12 +23,12 @@ function Navbar() {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="#">
-                  Home
+                  Library
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  Link
+                  Feed
                 </a>
               </li>
               <li className="nav-item dropdown">
@@ -37,7 +39,7 @@ function Navbar() {
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
                 >
-                  Dropdown
+                  Info
                 </a>
                 <ul className="dropdown-menu">
                   <li>
@@ -65,11 +67,20 @@ function Navbar() {
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="Search for a book"
                 aria-label="Search"
               />
               <button className="btn btn-outline-success" type="submit">
                 Search
+              </button>
+            </form>
+            <form className="d-flex" role="search">
+              <button
+                className="btn btn-outline-success"
+                type="submit"
+                style={{ marginLeft: 10 }}
+              >
+                Profile
               </button>
             </form>
           </div>

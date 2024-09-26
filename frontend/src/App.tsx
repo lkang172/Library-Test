@@ -7,9 +7,7 @@ function App() {
   return (
     <>
       <Navbar></Navbar>
-      <Grid>
-        <Gallery></Gallery>
-      </Grid>
+      <Gallery></Gallery>
     </>
   );
 }
