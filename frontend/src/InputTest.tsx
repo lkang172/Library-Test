@@ -50,9 +50,6 @@ function InputTest({ prompt1, prompt2 }: InputProps) {
             aria-describedby="emailHelp"
             onChange={(e) => setTitle(e.target.value)}
           />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div>
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
@@ -72,9 +69,6 @@ function InputTest({ prompt1, prompt2 }: InputProps) {
             className="form-check-input"
             id="exampleCheck1"
           />
-          <label className="form-check-label" htmlFor="exampleCheck1">
-            Check me out
-          </label>
         </div>
         <button type="submit" className="btn btn-primary">
           Submit
