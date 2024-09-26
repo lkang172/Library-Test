@@ -1,3 +1,4 @@
+import { faCat, faUser, faUserAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Navbar() {
@@ -80,7 +81,7 @@ function Navbar() {
                 type="submit"
                 style={{ marginLeft: 10 }}
               >
-                Profile
+                <FontAwesomeIcon icon={faUser} />
               </button>
             </form>
           </div>
