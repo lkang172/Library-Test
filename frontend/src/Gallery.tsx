@@ -13,7 +13,9 @@ function Gallery() {
 
   const fetchFromBackend = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/books");
+      const response = await fetch(
+        "http://localhost:3000/googleBooksApi/books"
+      );
       if (!response.ok)
         throw new Error(`HTTP Error! Status: ${response.status}`);
 
@@ -35,7 +37,7 @@ function Gallery() {
           <Card
             key={index}
             title={book.title}
-            text={`Authors: ${book.authors.join(", ")} | Pages: ${
+            text={`Author: ${book.authors.join(", ")} | Pages: ${
               book.pageCount
             }`}
             image={book.image}

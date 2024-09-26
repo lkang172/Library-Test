@@ -1,3 +1,5 @@
+import styled from "styled-components";
+
 interface CardProps {
   title: string;
   text: string;

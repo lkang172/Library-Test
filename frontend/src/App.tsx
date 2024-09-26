@@ -1,24 +1,16 @@
-import Card from "./Card";
 import Grid from "./Grid";
-import cards from "./bookdata";
 import Navbar from "./Navbar";
 import InputTest from "./InputTest";
+import Gallery from "./Gallery";
 
 function App() {
   return (
     <>
       <Navbar></Navbar>
-      <InputTest prompt1="Book" prompt2="Author"></InputTest>
       <Grid>
-        {cards.map((card, index) => (
-          <Card
-            key={index}
-            title={card.title}
-            text={card.text}
-            image={card.image}
-          />
-        ))}
+        <Gallery></Gallery>
       </Grid>
+      <InputTest prompt1="Book" prompt2="Author"></InputTest>
     </>
   );
 }

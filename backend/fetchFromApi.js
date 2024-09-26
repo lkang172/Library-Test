@@ -17,14 +17,10 @@ export const fetchFromApi = async () => {
             pageCount: item.volumeInfo.pageCount || "NA",
             image: item.volumeInfo.imageLinks ? item.volumeInfo.imageLinks.thumbnail : "No image found"
         }));
-        console.log(books || []);
+        return(books || []);
 
     } catch(error) {
         console.error("Error fetching books from Google Books:", error);
         return [];
     }
 };
-
-fetchBooks().then(books => {
-    console.log(books);
-});
