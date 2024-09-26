@@ -15,7 +15,7 @@ function InputTest({ prompt1, prompt2 }: InputProps) {
     const newBook = { title, author };
 
     try {
-      const response = await fetch("http://localhost:3000/api/books", {
+      const response = await fetch("http://localhost:3000/mongodb/books", {
         method: "POST",
         headers: {
           "Content-Type": "application/JSON",

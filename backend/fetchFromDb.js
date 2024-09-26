@@ -1,6 +1,6 @@
 import {connectToDatabase, getDb} from './dbconnection.js';
 
-export const fetchBooks = async () => {
+export const fetchFromDb = async () => {
     try {
         const db = getDb();
         const booksCollection = db.collection("books");
