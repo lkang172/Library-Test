@@ -7,10 +7,8 @@ import { UserProvider } from "./UserProvider";
 function App() {
   return (
     <>
-      <UserProvider>
-        <Navbar></Navbar>
-        <Gallery></Gallery>
-      </UserProvider>
+      <Navbar></Navbar>
+      <Gallery></Gallery>
     </>
   );
 }
